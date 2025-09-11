@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PULS Football School — Wrocław</title>
+<meta name="description" content="Футбольна школа PULS — Wrocław. Для дітей 5–12 років. Перше тренування безкоштовно." />
+<style>
+  :root{
+    --bg:#fbfbfd;
+    --emerald:#10b981;
+    --emerald-dark:#059669;
+    --ink:#0f1724;
+    --muted:#64748b;
+    --card:#ffffff;
+    --accent:#0369a1;
+    --glass: rgba(255,255,255,0.8);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#f8fafc 0%, #fff 100%);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.4;
+  }
+
+  /* Container */
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+
+  /* Header */
+  header.top{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:12px 0;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+  }
+  .logo img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+  .brand{font-weight:700;font-size:18px}
+  nav.topnav{margin-left:auto;display:flex;gap:10px;align-items:center}
+  nav.topnav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
+  nav.topnav a:hover{background:#eef2f7;color:var(--ink)}
+  .lang{border:1px solid #e6eef6;border-radius:10px;padding:6px}
+  .callbtn{background:var(--emerald);color:white;padding:8px 12px;border-radius:12px;text-decoration:none;display:inline-block;box-shadow:0 6px 18px rgba(16,185,129,0.14)}
+  .callbtn:hover{background:var(--emerald-dark)}
+
+  /* Hero */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:18px;
+    margin:18px 0 30px;
+    align-items:center;
+  }
+  .hero-card{
+    background:linear-gradient(135deg, rgba(3,105,161,0.06), rgba(16,185,129,0.04));
+    border-radius:20px;
+    padding:28px;
+    display:flex;
+    gap:20px;
+    align-items:center;
+    box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+    overflow:hidden;
+  }
+  .hero-left{flex:1}
+  .hero-title{font-size:34px;font-weight:800;margin:0;line-height:1.02;background:linear-gradient(90deg,#054a91,#059669); -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-sub{margin-top:8px;color:var(--muted)}
+  .hero-cta{margin-top:16px;display:flex;gap:12px;align-items:center}
+  .btn-primary{background:var(--emerald);color:white;padding:12px 18px;border-radius:14px;border:none;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(16,185,129,0.12)}
+  .btn-outline{border:1px solid var(--emerald);color:var(--emerald);padding:10px 16px;border-radius:14px;text-decoration:none}
+  .hero-right{width:300px;flex-shrink:0;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06)}
+  .hero-right img{display:block;width:100%;height:100%;object-fit:cover}
+
+  /* Features */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+  .card h3{margin:0 0 8px;font-size:16px}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+
+  /* Program */
+  .section{margin:36px 0}
+  .section h2{margin:0 0 12px;font-size:22px}
+  .program-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .prog-item{display:flex;gap:12px;align-items:flex-start}
+
+  /* Coaches */
+  .coaches{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .coach{
+    background:linear-gradient(180deg,#fff,#fbfdff);
+    border-radius:14px;padding:12px;display:flex;gap:12px;align-items:center;transition:transform .25s, box-shadow .25s;
+  }
+  .coach:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.08)}
+  .coach img{width:72px;height:72px;border-radius:12px;object-fit:cover}
+
+  /* Schedule */
+  .schedule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+  /* Instagram embed placeholder gallery */
+  .insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .insta-grid img{width:100%;height:100px;object-fit:cover;border-radius:8px}
+
+  /* Signup */
+  .signup-grid{display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start}
+  form .row{display:flex;gap:8px}
+  input[type="text"], input[type="email"], input[type="tel"], textarea, select{
+    width:100%;padding:10px;border-radius:10px;border:1px solid #e6edf2;font-size:14px;
+  }
+  .note{font-size:12px;color:var(--muted)}
+
+  /* Footer */
+  footer{margin-top:28px;padding:18px 0;text-align:center;color:var(--muted);font-size:13px}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .features{grid-template-columns:1fr 1fr}
+    .coaches{grid-template-columns:1fr}
+    .program-grid{grid-template-columns:1fr}
+    .schedule-grid{grid-template-columns:1fr}
+    .signup-grid{grid-template-columns:1fr}
+    .hero{grid-template-columns:1fr}
+    .hero-right{display:none}
+  }
+  @media (max-width:560px){
+    .features{grid-template-columns:1fr}
+    .nav-hide{display:none}
+    header.top{gap:8px}
+    .brand{font-size:15px}
+    .hero-title{font-size:28px}
+  }
+
+  /* Simple reveal animation */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,var(--t,transform) .6s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  /* small utilities */
+  .muted{color:var(--muted)}
+  .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#f1fbf7;color:var(--emerald);font-weight:700;font-size:13px}
+  .export-btn{background:#0f1724;color:white;padding:8px 12px;border-radius:10px;border:none;cursor:pointer}
+  .success{background:linear-gradient(90deg,#d1fae5,#ecfeff);padding:10px;border-radius:10px;border:1px solid #bbf7d0;color:#065f46}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- header -->
+    <header class="top" role="banner">
+      <div class="logo">
+        <img src="https://images.unsplash.com/photo-1541446654331-7a6a7c0263d9?q=80&w=800&auto=format&fit=crop" alt="PULS logo">
+        <div>
+          <div class="brand">PULS Football School — Wrocław</div>
+          <div class="muted" style="font-size:13px">Діти 5–12 років • Тренери UEFA</div>
+        </div>
+      </div>
+
+      <nav class="topnav nav-hide" aria-label="Основное меню">
+        <a href="#about">Про школу</a>
+        <a href="#program">Програма</a>
+        <a href="#schedule">Розклад</a>
+        <a href="#coaches">Тренери</a>
+        <a href="#signup">Запис</a>
+      </nav>
+
+      <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+        <select id="lang" class="lang" aria-label="Language switch">
+          <option value="ua">UA</option>
+          <option value="pl">PL</option>
+        </select>
+        <a class="callbtn" id="call" href="tel:+48786264017">Call • +48 786 264 017</a>
+      </div>
+    </header>
+
+    <!-- hero -->
+    <main>
+      <section class="hero" id="about">
+        <div class="hero-card reveal">
+          <div class="hero-left">
+            <h1 class="hero-title" id="title">Футбольна школа PULS — Вроцлав</h1>
+            <p class="hero-sub" id="subtitle">Грай | Рости | Перемагай. Перше тренування — безкоштовно!</p>
+            <div class="hero-cta">
+              <button class="btn-primary" id="openSign">Записатися на пробне</button>
+              <a class="btn-outline" href="https://wa.me/48786264017" target="_blank" rel="noreferrer">WhatsApp</a>
+            </div>
+            <div style="margin-top:12px" class="muted">Адреса: Wrocław, ul. Prosta 16</div>
+          </div>
+          <div class="hero-right">
+            <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=800&auto=format&fit=crop" alt="Kids training">
+          </div>
+        </div>
+
+        <!-- quick features -->
+        <div class="features reveal" style="margin-top:8px">
+          <div class="card">
+            <h3>Тренери UEFA</h3>
+            <p>Кваліфіковані тренери з досвідом роботи з дітьми. Індивідуальний підхід.</p>
+          </div>
+          <div class="card">
+            <h3>Комплексна програма</h3>
+            <p>Техніка, координація, швидкість та тактика — в ігровому форматі.</p>
+          </div>
+          <div class="card">
+            <h3>Безкоштовне перше тренування</h3>
+            <p>Спробуйте одне заняття без зобов'язань.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- program -->
+      <section class="section reveal" id="program">
+        <h2>Програма тренувань</h2>
+        <div class="program-grid">
+          <div class="card prog-item">
+            <div style="font-weight:700">Базова техніка</div>
+            <div class="muted">Ведення, пас, удар — прості вправи, що дають результат.</div>
+          </div>
+          <div class="card prog-item">
+            <div style="font-weight:700">Координація і швидкість</div>
+            <div class="muted">Пліометричні вправи і робота над швидкістю реакції.</div>
+          </div>
+          <div class="card prog-item">
+            <div style="font-weight:700">Міні-ігри</div>
+            <div class="muted">3×3 / 4×4 — місце для практики та веселощів.</div>
+          </div>
+          <div class="card prog-item">
+            <div style="font-weight:700">Командна взаємодія</div>
+            <div class="muted">Розвиток командного мислення і спортивної етики.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- schedule -->
+      <section class="section reveal" id="schedule">
+        <h2>Розклад (приклад)</h2>
+        <div class="schedule-grid">
+          <div class="card">
+            <strong>Пн</strong>
+            <div class="muted">17:00 — U7<br>18:00 — U9</div>
+          </div>
+          <div class="card">
+            <strong>Ср</strong>
+            <div class="muted">17:00 — U7<br>18:00 — U11</div>
+          </div>
+          <div class="card">
+            <strong>Пт</strong>
+            <div class="muted">17:00 — U9<br>18:00 — U11</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- coaches -->
+      <section class="section reveal" id="coaches">
+        <h2>Тренери</h2>
+        <div class="coaches">
+          <div class="coach card">
+            <img src="https://images.unsplash.com/photo-1546623381-3b6d2d4cc300?q=80&w=400&auto=format&fit=crop" alt="Coach">
+            <div>
+              <div style="font-weight:700">Andrii — Head Coach</div>
+              <div class="muted">UEFA Licence • 10+ років досвіду</div>
+            </div>
+          </div>
+          <div class="coach card">
+            <img src="https://images.unsplash.com/photo-1599058917210-0ad7e8b1c6c2?q=80&w=400&auto=format&fit=crop" alt="Coach 2">
+            <div>
+              <div style="font-weight:700">Michał — Coach</div>
+              <div class="muted">Тактика та індивідуальні заняття</div>
+            </div>
+          </div>
+          <div class="coach card">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop" alt="Coach 3">
+            <div>
+              <div style="font-weight:700">Olga — Fitness Coach</div>
+              <div class="muted">Розвиток координації і фізики</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- instagram / gallery -->
+      <section class="section reveal" id="instagram">
+        <h2>Instagram</h2>
+        <div class="insta-grid">
+          <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=900&auto=format&fit=crop" alt="">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop" alt="">
+          <img src="https://images.unsplash.com/photo-1541446654331-7a6a7c0263d9?q=80&w=900&auto=format&fit=crop" alt="">
+        </div>
+        <div style="margin-top:12px"><a href="https://instagram.com/puls_football_school_wroclaw" target="_blank" rel="noreferrer">@puls_football_school_wroclaw</a></div>
+      </section>
+
+      <!-- signup -->
+      <section class="section reveal" id="signup">
+        <h2 id="formTitle">Реєстрація на безкоштовне тренування</h2>
+        <div class="signup-grid">
+          <div class="card">
+            <form id="signupForm" autocomplete="off">
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input type="text" name="childName" placeholder="Ім'я дитини *" required>
+                <input type="text" name="parentName" placeholder="Ім'я батьків *" required>
+              </div>
+              <div style="display:flex;gap:8px;margin-bottom:8px">
+                <input type="text" name="childAge" placeholder="Вік дитини *" required>
+                <input type="email" name="email" placeholder="E-mail *" required>
+                <input type="tel" name="phone" placeholder="Телефон" >
+              </div>
+              <div style="margin-bottom:8px">
+                <textarea name="message" rows="4" placeholder="Коментар / побажання"></textarea>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <button class="btn-primary" type="submit">Надіслати</button>
+                <a class="btn-outline" href="mailto:signup@puls-football.pl?subject=PULS%20—%20Free%20training" target="_blank">Написати на пошту</a>
+                <button type="button" id="exportLeads" class="export-btn" title="Експорт збережених заявок">Експорт заявок</button>
+              </div>
+              <p class="note" style="margin-top:8px">Натискаючи «Надіслати», ви погоджуєтеся на обробку персональних даних для організації тренування.</p>
+
+              <div id="msg" style="margin-top:12px"></div>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Адреса та мапа</h3>
+            <p class="muted">Wrocław, ul. Prosta 16</p>
+            <div style="margin-top:12px;border-radius:10px;overflow:hidden">
+              <iframe
+                src="https://www.google.com/maps?q=Wroc%C5%82aw%2C%20Prosta%2016&output=embed"
+                style="width:100%;height:260px;border:0"
+                loading="lazy"></iframe>
+            </div>
+            <div style="margin-top:12px">
+              <div class="muted">Телефон: <a href="tel:+48786264017">+48 786 264 017</a></div>
+              <div class="muted" style="margin-top:6px">Instagram: <a href="https://instagram.com/puls_football_school_wroclaw" target="_blank" rel="noreferrer">@puls_football_school_wroclaw</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> PULS Wrocław — Сайт-візитка • Збережені заявки можна експортувати
+    </footer>
+
+  </div>
+
+<script>
+/* ---------- Simple i18n text variants (UA/PL) ---------- */
+const STR = {
+  ua: {
+    title: "Футбольна школа PULS — Вроцлав",
+    subtitle: "Грай | Рости | Перемагай. Перше тренування — безкоштовно!",
+    formTitle: "Реєстрація на безкоштовне тренування",
+    cta: "Записатися на пробне",
+    call: "Call • +48 786 264 017",
+    thanks: "Дякуємо! Ми зв'яжемося з вами найближчим часом.",
+    downloadName: "puls_leads.json"
+  },
+  pl: {
+    title: "Szkółka piłkarska PULS — Wrocław",
+    subtitle: "Graj | Rośnij | Wygrywaj. Pierwszy trening za darmo!",
+    formTitle: "Zapis na darmowy trening",
+    cta: "Umów darmowy trening",
+    call: "Zadzwoń • +48 786 264 017",
+    thanks: "Dziękujemy! Skontaktujemy się wkrótce.",
+    downloadName: "puls_leads_pl.json"
+  }
+};
+
+/* ---------- UI helpers ---------- */
+function el(q){return document.querySelector(q)}
+function all(q){return Array.from(document.querySelectorAll(q))}
+
+/* set year */
+el('#year').textContent = new Date().getFullYear();
+
+/* reveal on scroll */
+const reveals = all('.reveal');
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(ent=>{
+    if(ent.isIntersecting){
+      ent.target.classList.add('show');
+      // unobserve after show for performance
+      obs.unobserve(ent.target);
+    }
+  });
+},{threshold:0.12});
+reveals.forEach(r=>obs.observe(r));
+
+/* language switch */
+const langSel = el('#lang');
+const titleEl = el('#title');
+const subtitleEl = el('#subtitle');
+const formTitleEl = el('#formTitle');
+const ctaBtn = el('#openSign');
+const callBtn = el('#call');
+
+function setLang(l){
+  const s = STR[l] || STR.ua;
+  document.documentElement.lang = (l === 'pl' ? 'pl' : 'uk');
+  titleEl.textContent = s.title;
+  subtitleEl.textContent = s.subtitle;
+  formTitleEl.textContent = s.formTitle;
+  callBtn.textContent = s.call;
+  ctaBtn.textContent = s.cta;
+  // remember
+  localStorage.setItem('puls_lang', l);
+}
+langSel.addEventListener('change', ()=>setLang(langSel.value));
+setLang(localStorage.getItem('puls_lang') || 'ua');
+
+/* scroll to signup */
+el('#openSign').addEventListener('click', ()=>{ location.hash = '#signup'; el('input[name=childName]').focus(); });
+
+/* ---------- Form handling + local leads storage ---------- */
+const form = el('#signupForm');
+const msgBox = el('#msg');
+const LEADS_KEY = 'puls_leads';
+
+function loadLeads(){
+  try {
+    return JSON.parse(localStorage.getItem(LEADS_KEY) || '[]');
+  } catch(e){ return []; }
+}
+function saveLead(lead){
+  const all = loadLeads();
+  all.push(lead);
+  localStorage.setItem(LEADS_KEY, JSON.stringify(all));
+}
+
+/* form submit */
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form));
+  // basic validation: required fields
+  if(!data.childName || !data.parentName || !data.childAge || !data.email){
+    showMessage('Будь ласка, заповніть обовʼязкові поля.', 'error');
+    return;
+  }
+  // sanitize and prepare
+  const lead = {
+    childName: data.childName.trim(),
+    parentName: data.parentName.trim(),
+    childAge: data.childAge.trim(),
+    email: data.email.trim(),
+    phone: data.phone ? data.phone.trim() : '',
+    message: data.message ? data.message.trim() : '',
+    lang: langSel.value,
+    ts: new Date().toISOString()
+  };
+  try{
+    saveLead(lead);
+  }catch(err){
+    console.error('save error', err);
+  }
+
+  // try open mailto as backup (doesn't block)
+  const body = encodeURIComponent(
+    `PULS sign-up\n\n` +
+    `Child: ${lead.childName}\nParent: ${lead.parentName}\nAge: ${lead.childAge}\nPhone: ${lead.phone}\nEmail: ${lead.email}\nMessage: ${lead.message}`
+  );
+  const mailto = `mailto:signup@puls-football.pl?subject=PULS%20Signup&body=${body}`;
+  // open in new tab/window when possible (but avoid popup blockers by using location)
+  // we'll set location.href in a microtask so user sees success message
+  showMessage(STR[langSel.value].thanks, 'success');
+  form.reset();
+  setTimeout(()=>{ window.location.href = mailto; }, 400);
+});
+
+/* show message */
+function showMessage(text, type){
+  msgBox.innerHTML = '';
+  const div = document.createElement('div');
+  if(type === 'success'){
+    div.className = 'success';
+  } else {
+    div.style.color = '#b91c1c';
+  }
+  div.textContent = text;
+  msgBox.appendChild(div);
+  setTimeout(()=>{ if(msgBox.contains(div)) msgBox.removeChild(div); }, 8000);
+}
+
+/* ---------- export leads button ---------- */
+el('#exportLeads').addEventListener('click', ()=>{
+  const data = loadLeads();
+  if(!data || data.length === 0){
+    showMessage('Заявок не знайдено.', 'error');
+    return;
+  }
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = STR[langSel.value].downloadName;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+
+/* ---------- small UX niceties (keyboard focus, accessible skip) ---------- */
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'k' && (e.ctrlKey || e.metaKey)){
+    e.preventDefault(); el('input[name=childName]').focus();
+  }
+});
+</script>
+</body>
+</html>
