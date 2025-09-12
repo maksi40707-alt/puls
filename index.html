@@ -5,119 +5,139 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>PULS Football School — Wrocław</title>
 <meta name="description" content="Футбольна школа PULS — Wrocław. Для дітей 5–12 років. Перше тренування безкоштовно." />
+
+<!-- (DE) Visuelle Verfeinerungen: modernere Typografie, Farben, Abstände, Fokuszustände -->
 <style>
   :root{
-    --bg:#fbfbfd;
+    /* (DE) Farbpalette */
+    --bg:#f6f8fb;
+    --bg-grad-1:#f2f7ff;
+    --bg-grad-2:#ffffff;
     --emerald:#10b981;
-    --emerald-dark:#059669;
+    --emerald-600:#059669;
     --ink:#0f1724;
-    --muted:#64748b;
+    --muted:#5b6b84;
     --card:#ffffff;
     --accent:#0369a1;
-    --glass: rgba(255,255,255,0.8);
+    --ring:#93c5fd;
+    --glass: rgba(255,255,255,0.65);
+    --border:#e8eef5;
+
+    /* (DE) Effekte & Abstände */
     --radius:16px;
+    --radius-lg:20px;
+    --shadow-sm: 0 6px 18px rgba(2,6,23,0.06);
+    --shadow-md: 0 12px 28px rgba(2,6,23,0.08);
+    --shadow-lg: 0 20px 50px rgba(2,6,23,0.10);
   }
-  *{box-sizing:border-box}
+
+  /* (DE) Basis-Reset */
+  *,*::before,*::after{box-sizing:border-box}
   html,body{height:100%}
+  html{scroll-behavior:smooth}
   body{
     margin:0;
     font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg,#f8fafc 0%, #fff 100%);
+    background: linear-gradient(180deg,var(--bg-grad-1) 0%, var(--bg-grad-2) 100%);
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
-    line-height:1.4;
+    line-height:1.55;
   }
 
-  /* Container */
-  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+  /* (DE) Fokus gut sichtbar, aber dezent */
+  :focus{outline:none}
+  :focus-visible{outline:2px solid var(--ring); outline-offset:2px; border-radius:10px}
 
-  /* Header */
+  /* (DE) Container */
+  .wrap{max-width:1120px;margin:0 auto;padding:18px 20px}
+
+  /* (DE) Sticky Header mit Glas-Effekt */
   header.top{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    padding:12px 0;
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;gap:16px;
+    padding:10px 0; backdrop-filter:saturate(1.2) blur(8px);
+    background:linear-gradient(180deg,rgba(255,255,255,0.86),rgba(255,255,255,0.65));
+    border-bottom:1px solid var(--border);
   }
-  .logo{
-    display:flex;align-items:center;gap:10px;
-  }
-  .logo img{width:56px;height:56px;border-radius:10px;object-fit:cover}
-  .brand{font-weight:700;font-size:18px}
-  nav.topnav{margin-left:auto;display:flex;gap:10px;align-items:center}
-  nav.topnav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
-  nav.topnav a:hover{background:#eef2f7;color:var(--ink)}
-  .lang{border:1px solid #e6eef6;border-radius:10px;padding:6px}
-  .callbtn{background:var(--emerald);color:white;padding:8px 12px;border-radius:12px;text-decoration:none;display:inline-block;box-shadow:0 6px 18px rgba(16,185,129,0.14)}
-  .callbtn:hover{background:var(--emerald-dark)}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img{width:56px;height:56px;border-radius:12px;object-fit:cover;box-shadow:var(--shadow-sm)}
+  .brand{font-weight:800;font-size:18px;letter-spacing:0.2px}
 
-  /* Hero */
-  .hero{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:18px;
-    margin:18px 0 30px;
-    align-items:center;
+  nav.topnav{margin-left:auto;display:flex;gap:6px;align-items:center}
+  nav.topnav a{
+    color:var(--muted);text-decoration:none;padding:10px 12px;border-radius:10px;transition:background .2s,color .2s;
   }
+  nav.topnav a:hover{background:#eef2f7;color:var(--ink)}
+  nav.topnav a[aria-current="page"]{background:#e9f6ff;color:#074b72}
+
+  .lang{border:1px solid var(--border);border-radius:10px;padding:8px;background:#fff}
+  .callbtn{background:var(--emerald);color:white;padding:10px 14px;border-radius:12px;text-decoration:none;display:inline-block;box-shadow:0 6px 18px rgba(16,185,129,0.18);font-weight:700}
+  .callbtn:hover{background:var(--emerald-600)}
+
+  /* (DE) Hero */
+  .hero{display:grid;grid-template-columns:1fr;gap:20px;margin:18px 0 30px;align-items:center}
   .hero-card{
-    background:linear-gradient(135deg, rgba(3,105,161,0.06), rgba(16,185,129,0.04));
-    border-radius:20px;
-    padding:28px;
-    display:flex;
-    gap:20px;
-    align-items:center;
-    box-shadow: 0 12px 30px rgba(2,6,23,0.06);
-    overflow:hidden;
+    background:linear-gradient(135deg, rgba(3,105,161,0.08), rgba(16,185,129,0.06));
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:28px;display:flex;gap:24px;align-items:center;box-shadow:var(--shadow-md);overflow:hidden
   }
-  .hero-left{flex:1}
-  .hero-title{font-size:34px;font-weight:800;margin:0;line-height:1.02;background:linear-gradient(90deg,#054a91,#059669); -webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero-sub{margin-top:8px;color:var(--muted)}
-  .hero-cta{margin-top:16px;display:flex;gap:12px;align-items:center}
-  .btn-primary{background:var(--emerald);color:white;padding:12px 18px;border-radius:14px;border:none;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(16,185,129,0.12)}
-  .btn-outline{border:1px solid var(--emerald);color:var(--emerald);padding:10px 16px;border-radius:14px;text-decoration:none}
-  .hero-right{width:300px;flex-shrink:0;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06)}
+  .hero-left{flex:1;min-width:0}
+  .hero-title{font-size:36px;font-weight:900;margin:0;line-height:1.05;
+    background:linear-gradient(90deg,#054a91,#059669); -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-sub{margin-top:10px;color:var(--muted)}
+  .hero-cta{margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .btn-primary{background:var(--emerald);color:white;padding:12px 18px;border-radius:14px;border:none;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(16,185,129,0.18);transition:transform .08s ease}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-outline{border:1px solid var(--emerald);color:var(--emerald);padding:10px 16px;border-radius:14px;text-decoration:none;font-weight:700}
+  .hero-right{width:340px;flex-shrink:0;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3}
   .hero-right img{display:block;width:100%;height:100%;object-fit:cover}
 
-  /* Features */
-  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-  .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+  /* (DE) Features */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+  .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-sm);border:1px solid var(--border)}
   .card h3{margin:0 0 8px;font-size:16px}
   .card p{margin:0;color:var(--muted);font-size:14px}
 
-  /* Program */
-  .section{margin:36px 0}
-  .section h2{margin:0 0 12px;font-size:22px}
+  /* (DE) Sections */
+  .section{margin:40px 0}
+  .section h2{margin:0 0 14px;font-size:22px}
   .program-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
   .prog-item{display:flex;gap:12px;align-items:flex-start}
 
-  /* Coaches */
+  /* (DE) Coaches */
   .coaches{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
   .coach{
-    background:linear-gradient(180deg,#fff,#fbfdff);
-    border-radius:14px;padding:12px;display:flex;gap:12px;align-items:center;transition:transform .25s, box-shadow .25s;
+    background:linear-gradient(180deg,#ffffff,#fbfdff);
+    border-radius:14px;padding:12px;display:flex;gap:12px;align-items:center;transition:transform .25s, box-shadow .25s, border-color .25s;
+    border:1px solid var(--border);
   }
-  .coach:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.08)}
-  .coach img{width:72px;height:72px;border-radius:12px;object-fit:cover}
+  .coach:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.08);border-color:#dbe7f3}
+  .coach img{width:76px;height:76px;border-radius:12px;object-fit:cover}
 
-  /* Schedule */
+  /* (DE) Schedule */
   .schedule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 
-  /* Instagram embed placeholder gallery */
-  .insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  .insta-grid img{width:100%;height:100px;object-fit:cover;border-radius:8px}
+  /* (DE) Instagram */
+  .insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .insta-grid img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px}
 
-  /* Signup */
+  /* (DE) Signup */
   .signup-grid{display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start}
   form .row{display:flex;gap:8px}
   input[type="text"], input[type="email"], input[type="tel"], textarea, select{
-    width:100%;padding:10px;border-radius:10px;border:1px solid #e6edf2;font-size:14px;
+    width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);font-size:14px;background:#fff;transition:border .2s, box-shadow .2s
   }
+  input:focus, textarea:focus, select:focus{box-shadow:0 0 0 4px rgba(147,197,253,0.35)}
   .note{font-size:12px;color:var(--muted)}
+  .export-btn{background:#0f1724;color:white;padding:10px 12px;border-radius:12px;border:none;cursor:pointer}
+  .success{background:linear-gradient(90deg,#d1fae5,#ecfeff);padding:10px;border-radius:10px;border:1px solid #bbf7d0;color:#065f46}
 
-  /* Footer */
+  /* (DE) Footer */
   footer{margin-top:28px;padding:18px 0;text-align:center;color:var(--muted);font-size:13px}
 
-  /* Responsive */
+  /* (DE) Responsive */
   @media (max-width:980px){
     .features{grid-template-columns:1fr 1fr}
     .coaches{grid-template-columns:1fr}
@@ -131,19 +151,20 @@
     .features{grid-template-columns:1fr}
     .nav-hide{display:none}
     header.top{gap:8px}
-    .brand{font-size:15px}
+    .brand{font-size:16px}
     .hero-title{font-size:28px}
   }
 
-  /* Simple reveal animation */
-  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,var(--t,transform) .6s ease}
-  .reveal.show{opacity:1;transform:none}
 
-  /* small utilities */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{transition:none}
+  }
+
+  /* (DE) kleine Utilities */
   .muted{color:var(--muted)}
   .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#f1fbf7;color:var(--emerald);font-weight:700;font-size:13px}
-  .export-btn{background:#0f1724;color:white;padding:8px 12px;border-radius:10px;border:none;cursor:pointer}
-  .success{background:linear-gradient(90deg,#d1fae5,#ecfeff);padding:10px;border-radius:10px;border:1px solid #bbf7d0;color:#065f46}
 </style>
 </head>
 <body>
@@ -152,7 +173,8 @@
     <!-- header -->
     <header class="top" role="banner">
       <div class="logo">
-        <img src="https://images.unsplash.com/photo-1541446654331-7a6a7c0263d9?q=80&w=800&auto=format&fit=crop" alt="PULS logo">
+        <!-- (DE) Lokale Datei im gleichen Ordner -->
+        <img src="tg_image_110262498.png" alt="PULS logo">
         <div>
           <div class="brand">PULS Football School — Wrocław</div>
           <div class="muted" style="font-size:13px">Діти 5–12 років • Тренери UEFA</div>
@@ -298,11 +320,11 @@
         <div class="signup-grid">
           <div class="card">
             <form id="signupForm" autocomplete="off">
-              <div style="display:flex;gap:8px;margin-bottom:8px">
+              <div class="row" style="margin-bottom:8px">
                 <input type="text" name="childName" placeholder="Ім'я дитини *" required>
                 <input type="text" name="parentName" placeholder="Ім'я батьків *" required>
               </div>
-              <div style="display:flex;gap:8px;margin-bottom:8px">
+              <div class="row" style="margin-bottom:8px">
                 <input type="text" name="childAge" placeholder="Вік дитини *" required>
                 <input type="email" name="email" placeholder="E-mail *" required>
                 <input type="tel" name="phone" placeholder="Телефон" >
@@ -310,7 +332,7 @@
               <div style="margin-bottom:8px">
                 <textarea name="message" rows="4" placeholder="Коментар / побажання"></textarea>
               </div>
-              <div style="display:flex;gap:8px;align-items:center">
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
                 <button class="btn-primary" type="submit">Надіслати</button>
                 <a class="btn-outline" href="mailto:signup@puls-football.pl?subject=PULS%20—%20Free%20training" target="_blank">Написати на пошту</a>
                 <button type="button" id="exportLeads" class="export-btn" title="Експорт збережених заявок">Експорт заявок</button>
@@ -324,7 +346,7 @@
           <div class="card">
             <h3>Адреса та мапа</h3>
             <p class="muted">Wrocław, ul. Prosta 16</p>
-            <div style="margin-top:12px;border-radius:10px;overflow:hidden">
+            <div style="margin-top:12px;border-radius:12px;overflow:hidden;border:1px solid var(--border)">
               <iframe
                 src="https://www.google.com/maps?q=Wroc%C5%82aw%2C%20Prosta%2016&output=embed"
                 style="width:100%;height:260px;border:0"
@@ -347,7 +369,7 @@
   </div>
 
 <script>
-/* ---------- Simple i18n text variants (UA/PL) ---------- */
+/* (DE) Kleine I18n-Verbesserung & UX */
 const STR = {
   ua: {
     title: "Футбольна школа PULS — Вроцлав",
@@ -369,27 +391,25 @@ const STR = {
   }
 };
 
-/* ---------- UI helpers ---------- */
 function el(q){return document.querySelector(q)}
 function all(q){return Array.from(document.querySelectorAll(q))}
 
-/* set year */
+/* Jahr setzen */
 el('#year').textContent = new Date().getFullYear();
 
-/* reveal on scroll */
+/* Reveal on scroll */
 const reveals = all('.reveal');
 const obs = new IntersectionObserver((entries)=>{
   entries.forEach(ent=>{
     if(ent.isIntersecting){
       ent.target.classList.add('show');
-      // unobserve after show for performance
       obs.unobserve(ent.target);
     }
   });
 },{threshold:0.12});
 reveals.forEach(r=>obs.observe(r));
 
-/* language switch */
+/* Sprache umschalten */
 const langSel = el('#lang');
 const titleEl = el('#title');
 const subtitleEl = el('#subtitle');
@@ -405,24 +425,21 @@ function setLang(l){
   formTitleEl.textContent = s.formTitle;
   callBtn.textContent = s.call;
   ctaBtn.textContent = s.cta;
-  // remember
   localStorage.setItem('puls_lang', l);
 }
 langSel.addEventListener('change', ()=>setLang(langSel.value));
 setLang(localStorage.getItem('puls_lang') || 'ua');
 
-/* scroll to signup */
+/* Scroll zum Formular */
 el('#openSign').addEventListener('click', ()=>{ location.hash = '#signup'; el('input[name=childName]').focus(); });
 
-/* ---------- Form handling + local leads storage ---------- */
+/* Form + lokale Leads */
 const form = el('#signupForm');
 const msgBox = el('#msg');
 const LEADS_KEY = 'puls_leads';
 
 function loadLeads(){
-  try {
-    return JSON.parse(localStorage.getItem(LEADS_KEY) || '[]');
-  } catch(e){ return []; }
+  try { return JSON.parse(localStorage.getItem(LEADS_KEY) || '[]'); } catch(e){ return []; }
 }
 function saveLead(lead){
   const all = loadLeads();
@@ -430,16 +447,13 @@ function saveLead(lead){
   localStorage.setItem(LEADS_KEY, JSON.stringify(all));
 }
 
-/* form submit */
 form.addEventListener('submit', function(e){
   e.preventDefault();
   const data = Object.fromEntries(new FormData(form));
-  // basic validation: required fields
   if(!data.childName || !data.parentName || !data.childAge || !data.email){
     showMessage('Будь ласка, заповніть обовʼязкові поля.', 'error');
     return;
   }
-  // sanitize and prepare
   const lead = {
     childName: data.childName.trim(),
     parentName: data.parentName.trim(),
@@ -450,26 +464,18 @@ form.addEventListener('submit', function(e){
     lang: langSel.value,
     ts: new Date().toISOString()
   };
-  try{
-    saveLead(lead);
-  }catch(err){
-    console.error('save error', err);
-  }
+  try{ saveLead(lead); }catch(err){ console.error('save error', err); }
 
-  // try open mailto as backup (doesn't block)
   const body = encodeURIComponent(
     `PULS sign-up\n\n` +
     `Child: ${lead.childName}\nParent: ${lead.parentName}\nAge: ${lead.childAge}\nPhone: ${lead.phone}\nEmail: ${lead.email}\nMessage: ${lead.message}`
   );
   const mailto = `mailto:signup@puls-football.pl?subject=PULS%20Signup&body=${body}`;
-  // open in new tab/window when possible (but avoid popup blockers by using location)
-  // we'll set location.href in a microtask so user sees success message
   showMessage(STR[langSel.value].thanks, 'success');
   form.reset();
   setTimeout(()=>{ window.location.href = mailto; }, 400);
 });
 
-/* show message */
 function showMessage(text, type){
   msgBox.innerHTML = '';
   const div = document.createElement('div');
@@ -483,7 +489,7 @@ function showMessage(text, type){
   setTimeout(()=>{ if(msgBox.contains(div)) msgBox.removeChild(div); }, 8000);
 }
 
-/* ---------- export leads button ---------- */
+/* Export Leads */
 el('#exportLeads').addEventListener('click', ()=>{
   const data = loadLeads();
   if(!data || data.length === 0){
@@ -501,7 +507,7 @@ el('#exportLeads').addEventListener('click', ()=>{
   URL.revokeObjectURL(url);
 });
 
-/* ---------- small UX niceties (keyboard focus, accessible skip) ---------- */
+/* kleine Tastatur-Verbesserung */
 document.addEventListener('keydown', (e)=>{
   if(e.key === 'k' && (e.ctrlKey || e.metaKey)){
     e.preventDefault(); el('input[name=childName]').focus();
